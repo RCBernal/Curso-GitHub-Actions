@@ -1,0 +1,55 @@
+name: Triggers
+run-name: Estoy aprendiendo a utilizar Triggers
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+    types: [opened, reopened, synchronize]
+
+  workflow_dispatch:
+    inputs:
+      lenguaje_favorito:
+        description: "Lenguaje Favorito"
+        required: true
+        default: "Java"
+        type: choice
+        options:
+        - Python
+        - Java
+        - C#
+      nombre:
+        description: "Ingresa tu nombre"
+        required: true
+        default: Roberto
+        type: string
+      tag:
+        description: "Sabes SQL"
+        required: true
+        type: boolean
+jobs:
+  Hola-mundo-manual:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: name
+        run: echo "USERNAME=${{ inputs.nombre }}" >> $GITHUB_ENV
+      - name: lenguaje_favorito
+        run: echo "LANGUAGE=${{ inputs.lenguaje_favorito }}" >> $GITHUB_ENV
+      - name: Correr script prueba
+        run: Java triggers.java
+  Hola-mundo:
+   runs-on: ubuntu-latest
+   steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Setup Java JDK
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin' # See 'Supported distributions' for available options
+          java-version: '21'
+      - name: Definir variable
+        run: echo "USERNAME=${{github.actor}}" >> $GITHUB_ENV
+      - name: Test
+        run: java Main.java
