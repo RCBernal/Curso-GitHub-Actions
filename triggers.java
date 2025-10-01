@@ -5,9 +5,11 @@ import java.util.Optional;
 public class Main {
     public static void main(String[] args) {
         //Vamos a obtener la variable para el entorno de Github
-        String USERNAME;
-        String LANGUAGE;
-        System.out.println("Hola ->" + USERNAME + " desde HitHub, tu lenguaje favorito es : " + LANGUAGE);
+        String username = System.getenv("USERNAME");
+        String language = System.getenv("LANGUAGE");
+
+        System.out.println("Usuario: " + username);
+        System.out.println("Lenguaje: " + language);
 
         }
     }
