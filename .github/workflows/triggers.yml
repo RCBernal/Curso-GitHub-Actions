@@ -23,10 +23,6 @@ on:
         required: true
         default: Roberto
         type: string
-      tag:
-        description: "Sabes SQL"
-        required: true
-        type: boolean
 jobs:
   Hola-mundo-manual:
     runs-on: ubuntu-latest
