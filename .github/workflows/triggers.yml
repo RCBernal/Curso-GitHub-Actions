@@ -34,7 +34,7 @@ jobs:
       - name: lenguaje_favorito
         run: echo "LANGUAGE=${{ inputs.lenguaje_favorito }}" >> $GITHUB_ENV
       - name: Correr script prueba
-        run: Java triggers.java
+        run: java triggers.java
   Hola-mundo:
    runs-on: ubuntu-latest
    steps:
