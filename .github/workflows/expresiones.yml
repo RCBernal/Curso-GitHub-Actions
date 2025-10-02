@@ -3,20 +3,48 @@ run-name: Estoy aprendiendo Expresiones de GitHub
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+      edad:
+        description: 'Edad'
+        required: true
+        type: integer
+      nombre:
+        description: 'Nombre'
+        required: true
+        default: 'Username'
+        type: string
+      genero:
+        description: "Genero"
+        required: true
+        default: "-"
+        type: choice
+        options:
+        - H
+        - M
 jobs:
-  build:
+  validar:
     runs-on: ubuntu-latest
     env:
-      USERNAME: RC
-      LANGUAGE: Python
+      YEARS: ${{ fromJSON(github.event.inputs.edad) }}
+      NAME: ${{ github.event.inputs.nombre }}
+      GENRE: ${{ github.event.inputs.genero }}
     steps:
-      - name: Mostrar variables como JSON
-        run: echo '${{ toJSON(env) }}'
+      - name: Mayor de edad y género M
+        if: ${{ env.GENRE == 'M' && env.YEARS >= 18 }}
+        run: echo "Hola amiga ${{ env.NAME }}, eres mayor de edad y puedes votar"
 
+      - name: Menor de edad y género M
+        if: ${{ env.GENRE == 'M' && env.YEARS >= 0 && env.YEARS < 18 }}
+        run: echo "Hola amiga ${{ env.NAME }}, eres menor de edad o no eres mujer"
+
+      - name: Mayor de edad y género H
+        if: ${{ env.GENRE == 'H' && env.YEARS >= 18 }}
+        run: echo "Hola amigO ${{ env.NAME }}, eres mayor de edad y puedes votar"
+
+      - name: Menor de edad y género H
+        if: ${{ env.GENRE == 'H' && env.YEARS >= 0 && env.YEARS < 18 }}
+        run: echo "Hola amiga ${{ env.NAME }}, eres menor de edad o no eres mujer"
+
+      - name: Mostrar variables JSON
+        run: echo '${{ toJSON(env) }}'
