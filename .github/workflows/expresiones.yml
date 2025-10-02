@@ -32,19 +32,19 @@ jobs:
     steps:
       - name: Mayor de edad y género M
         if: ${{ env.GENRE == 'M' && env.YEARS >= 18 }}
-        run: echo "Hola amiga ${{ env.NAME }}, eres mayor de edad y puedes votar"
+        run: echo "Hola amiga ${{ env.NAME }}, eres mujer y mayor de edad y puedes votar"
 
       - name: Menor de edad y género M
         if: ${{ env.GENRE == 'M' && env.YEARS >= 0 && env.YEARS < 18 }}
-        run: echo "Hola amiga ${{ env.NAME }}, eres menor de edad o no eres mujer"
+        run: echo "Hola amiga ${{ env.NAME }}, eres mujer y menor de edad no puedes votar"
 
       - name: Mayor de edad y género H
         if: ${{ env.GENRE == 'H' && env.YEARS >= 18 }}
-        run: echo "Hola amigO ${{ env.NAME }}, eres mayor de edad y puedes votar"
+        run: echo "Hola amigo ${{ env.NAME }}, eres hombre y mayor de edad y puedes votar"
 
       - name: Menor de edad y género H
         if: ${{ env.GENRE == 'H' && env.YEARS >= 0 && env.YEARS < 18 }}
-        run: echo "Hola amiga ${{ env.NAME }}, eres menor de edad o no eres mujer"
+        run: echo "Hola amig0 ${{ env.NAME }}, eres hombre y menor de edad no puedes votar"
 
       - name: Mostrar variables JSON
         run: echo '${{ toJSON(env) }}'
