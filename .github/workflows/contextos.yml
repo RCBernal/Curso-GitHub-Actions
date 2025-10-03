@@ -18,11 +18,11 @@ jobs:
     steps:
       - name: mostrar info del repo
         run: |
-          echo: "RAMA=${{ github.ref_name }}" >> $GITHUB_ENV
-          echo: "REFERENCIA=${{ github.ref }}" >> $GITHUB_ENV
-          echo: "REPOSITORIO=${{ github.repository }}" >> $GITHUB_ENV
-          echo: "USERNAME=${{github.actor}}" >> $GITHUB_ENV
-          echo: "ID=${{github.repository_id	}}" >> $GITHUB_ENV
+          echo: "RAMA=${{ github.ref_name }}" 
+          echo: "REFERENCIA=${{ github.ref }}" 
+          echo: "REPOSITORIO=${{ github.repository }}" 
+          echo: "USERNAME=${{github.actor}}" 
+          echo: "ID=${{github.repository_id	}}"
   not-main:
      if: ${{ github.ref != 'refs/heads/main'}}
      runs-on: ubuntu-latest
