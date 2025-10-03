@@ -1,5 +1,5 @@
-name: Aprendiendo Expresiones
-run-name: Estoy aprendiendo Expresiones de GitHub
+name: Aprendiendo Variables
+run-name: Estoy aprendiendo Variables de GitHub
 
 # Controls when the workflow will run
 on:
