@@ -27,20 +27,16 @@ jobs:
    steps:
      - name: Calcular ani actual
        run: | 
-          # Guardamos el año actual en una variable bash
           YEAR_ACTUALLY=$(date +'%Y')
-          # Calculamos la diferencia usando la variable bash
-          DIFERENCIA=$(( YEAR_ACTUALLY - YEAR ))
-          # Guardamos las dos en el entorno para pasos siguientes
+          YEAR_NUM=$(( YEAR ))
+          DIFERENCIA=$(( YEAR_ACTUALLY - YEAR_NUM ))
           echo "YEAR_ACTUALLY=$YEAR_ACTUALLY" >> $GITHUB_ENV
           echo "DIFERENCIA=$DIFERENCIA" >> $GITHUB_ENV
        
      - name: trabajo_desarrollador
        if: ${{ env.WORK == 'Desarrollador' }}
-       run: |
-         echo "Hola ${{ vars.NOMBRE }},  tienes ${{ env.YEAR }} anios por lo que naciste en el anio $DIFERIENCIA y trabajas en ${{ env.WORK }}"
-
+       run: echo "Hola ${{ vars.NOMBRE }}, tienes ${{ env.YEAR }} anios por lo que naciste en el anio ${{ env.DIFERENCIA }} y trabajas como ${{ env.WORK }}"
+       
      - name: trabajo_Desempleado
        if: ${{ env.WORK == 'Desempleado' }}
-       run: |
-         echo "Hola ${{ vars.NOMBRE }},  tienes ${{ env.YEAR }} anios por lo que naciste en el anio $DIFERIENCIA y trabajas en ${{ env.WORK }}"
+       run: echo "Hola ${{ vars.NOMBRE }}, tienes ${{ env.YEAR }} anios por lo que naciste en el anio ${{ env.DIFERENCIA }} y trabajas como ${{ env.WORK }}"
