@@ -27,13 +27,10 @@ jobs:
    steps:
      - name: Calcular ani actual
        run: | 
-          # Guardamos el año actual en una variable bash
-          YEAR_ACTUALLY=$(date +'%Y')
-          # Calculamos la diferencia usando la variable bash
-          DIFERENCIA=$(( YEAR_ACTUALLY - YEAR ))
-          # Guardamos las dos en el entorno para pasos siguientes
-          echo "YEAR_ACTUALLY=$YEAR_ACTUALLY" >> $GITHUB_ENV
-          echo "DIFERENCIA=$DIFERENCIA" >> $GITHUB_ENV
+         YEAR_ACTUALLY=$(date +'%Y')
+         DIFERENCIA=$(( YEAR_ACTUALLY - YEAR ))
+         echo "YEAR_ACTUALLY=$YEAR_ACTUALLY" >> $GITHUB_ENV
+         echo "DIFERENCIA=$DIFERENCIA" >> $GITHUB_ENV
        
      - name: trabajo_desarrollador
        if: ${{ env.WORK == 'Desarrollador' }}
