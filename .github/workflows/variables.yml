@@ -37,6 +37,8 @@ jobs:
        if: ${{ env.WORK == 'Desarrollador' }}
        run: |
          echo "Hola ${{ vars.NOMBRE }},  tienes ${{ env.YEAR }} anios por lo que naciste en el anio $DIFERIENCIA y trabajas en ${{ env.WORK }}"
+         echo "El año actual es $YEAR_ACTUALLY"
+         echo "La diferencia es $DIFERENCIA años"
 
      - name: trabajo_Desempleado
        if: ${{ env.WORK == 'Desempleado' }}
