@@ -2,13 +2,8 @@ name: Aprendiendo contextos en GitHub Actions
 run-name: Estoy aprendiendo Contextos de GitHub Actions
 
 # Controls when the workflow will run
-on:
+on: [push, pull_request]
   # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
 jobs:
   # This workflow contains a single job called "build"
   build:
