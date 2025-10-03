@@ -1,0 +1,41 @@
+name: Aprendiendo Expresiones
+run-name: Estoy aprendiendo Expresiones de GitHub
+
+# Controls when the workflow will run
+on:
+  workflow_dispatch:
+    inputs:
+      edad:
+        description: 'Edad'
+        required: true
+        type: integer
+      trabajo:
+        description: "Trabajo"
+        required: true
+        default: " "
+        type: choice
+        options:
+        - Desarrollador
+        - Desempleado
+    
+jobs:
+ Definicion:
+   runs-on: ubuntu-latest
+   env:
+     YEAR: ${{ fromJSON(github.event.inputs.edad) }}
+     WORK: ${{ github.event.inputs.trabajo }}
+   steps:
+     - name: Calcular ani actual
+       run: | 
+          echo "YEAR_ACTUALLY=$(date + '%Y')" >> $GITHUB_ENV
+          DIFERIENCIA=$(( ${{ env.YEAR_ACTUALLY }} - ${{ env.YEAR }} ))
+       
+     - name: trabajo_desarrollador
+       if: ${{ env.WORK == 'Desarrollador' }}
+       run: |
+         echo "Hola ${{ vars.NOMBRE }},  tienes ${{ env.YEAR }} anios por lo que naciste en el anio $DIFERIENCIA y trabajas en ${{ env.WORK }}"
+
+     - name: trabajo_Desempleado
+       if: ${{ env.WORK == 'Desempleado' }}
+       run: |
+         echo "Hola ${{ vars.NOMBRE }},  tienes ${{ env.YEAR }} anios por lo que naciste en el anio $DIFERIENCIA y trabajas en ${{ env.WORK }}"
