@@ -24,7 +24,7 @@ jobs:
           echo: "USERNAME=${{github.actor}}" >> $GITHUB_ENV
           echo: "ID=${{github.repository_id	}}" >> $GITHUB_ENV
   not-main:
-     if: ${{ github.ref == 'refs/heads/main'}}
+     if: ${{ github.ref != 'refs/heads/main'}}
      runs-on: ubuntu-latest
      steps:
        - name: mostrar rama
