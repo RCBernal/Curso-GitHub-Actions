@@ -1,5 +1,5 @@
 name: Aprendiendo GitHub Actions
-run-name: Estoy aprendiendo GitHub
+run-name: Estoy aprendiendo Contextos de GitHub Actions
 
 # Controls when the workflow will run
 on:
