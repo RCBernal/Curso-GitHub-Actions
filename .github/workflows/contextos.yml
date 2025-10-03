@@ -19,7 +19,6 @@ jobs:
       - name: mostrar info del repo
         run: |
           echo: "RAMA=${{ github.ref_name }}" 
-          echo: "REFERENCIA=${{ github.ref }}" 
           echo: "REPOSITORIO=${{ github.repository }}" 
           echo: "USERNAME=${{github.actor}}" 
           echo: "ID=${{github.repository_id	}}"
