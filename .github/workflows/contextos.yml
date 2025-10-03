@@ -1,0 +1,33 @@
+name: Aprendiendo GitHub Actions
+run-name: Estoy aprendiendo GitHub
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: mostrar info del repo
+        run: |
+          echo: "RAMA=${{ github.ref_name }}" >> $GITHUB_ENV
+          echo: "REFERENCIA=${{ github.ref }}" >> $GITHUB_ENV
+          echo: "REPOSITORIO=${{ github.repository }}" >> $GITHUB_ENV
+          echo: "USERNAME=${{github.actor}}" >> $GITHUB_ENV
+          echo: "ID=${{github.repository_id	}}" >> $GITHUB_ENV
+  not-main:
+     if: ${{ github.ref == 'refs/heads/main'}}
+     runs-on: ubuntu-latest
+     steps:
+       - name: mostrar rama
+         run: echo "Esta no es la rama Main, es la rama ${{ github.ref_name }}"
+  
+      
