@@ -35,9 +35,9 @@ jobs:
      - name: trabajo_desarrollador
        if: ${{ env.WORK == 'Desarrollador' }}
        run: |
-         echo "Hola ${{ vars.NOMBRE }},  tienes ${{ env.YEAR }} anios por lo que naciste en el anio $DIFERIENCIA y trabajas en ${{ env.WORK }}"
+         echo "Hola ${{ vars.NOMBRE }},  tienes ${{ env.YEAR }} anios por lo que naciste en el anio ${{env.DIFERIENCIA}} y trabajas en ${{ env.WORK }}"
 
      - name: trabajo_Desempleado
        if: ${{ env.WORK == 'Desempleado' }}
        run: |
-         echo "Hola ${{ vars.NOMBRE }},  tienes ${{ env.YEAR }} anios por lo que naciste en el anio $DIFERIENCIA y trabajas en ${{ env.WORK }}"
+         echo "Hola ${{ vars.NOMBRE }},  tienes ${{ env.YEAR }} anios por lo que naciste en el anio ${{env.DIFERIENCIA}} y trabajas en ${{ env.WORK }}"
